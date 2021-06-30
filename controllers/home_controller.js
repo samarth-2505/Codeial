@@ -4,7 +4,7 @@ module.exports.home = function(req, res){
     //we can change the cookie's key's value like this at the server side
     // res.cookie('user_id',25);
     return res.render('home', {
-        title: "Home"
+        title: "Home Page"
     });
 };
 
