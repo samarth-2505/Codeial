@@ -4,7 +4,7 @@ const passport = require('passport');
 
 const usersController = require('../controllers/users_controller');
 
-router.get('/profile', passport.checkAuthentication ,usersController.profile); //before opening the profile page, check if the user has been authenticated or not
+router.get('/profile/:id', passport.checkAuthentication ,usersController.profile); //before opening the profile page, check if the user has been authenticated or not
 
 router.get('/sign-up', usersController.signUp);
 
