@@ -2,6 +2,17 @@
         <h1>
             Codeial / Profile Page
         </h1>
- 
+
+
+        <% if(locals.user.id == profile_user.id) { %>
+        <!-- if the logged in user is viewing his/her own profile     -->
+    <form action="/users/update/<%= profile_user.id %>" method="post">
+        <input type="text" name="name" placeholder="Your Name" value="<%= profile_user.name %>" required>
+        <input type="text" name="email" placeholder="Your Email" value="<%= profile_user.email %>" required>
+        <input type="submit" value="Update Details">       
+    </form>
+        <% } else {%>   
+        <!-- else show only the profile page -->
         <p><%= profile_user.name %></p>
         <p><%= profile_user.email %></p>
+        <% } %>

@@ -9,6 +9,18 @@ module.exports.profile = function(req, res){
     });
 }
 
+module.exports.update = function(req,res){
+    if(req.params.id == req.user.id) //if the signed in user is same as the requested user profile update then only update
+    {
+        User.findByIdAndUpdate(req.params.id, req.body, function(err,user){
+          return res.redirect('back');
+        });
+    }
+    else{
+        return res.status(401).send('Unauthorized');
+    }
+}
+
 // render the sign up page
 module.exports.signUp = function(req, res){
     if(req.isAuthenticated())
