@@ -5,7 +5,7 @@
 
 
         <% if(locals.user.id == profile_user.id) { %>
-        <!-- if the logged in user is viewing his/her own profile     -->
+        <!-- if the logged in user is viewing his/her own profile -> show the update form    -->
     <form action="/users/update/<%= profile_user.id %>" method="post">
         <input type="text" name="name" placeholder="Your Name" value="<%= profile_user.name %>" required>
         <input type="text" name="email" placeholder="Your Email" value="<%= profile_user.email %>" required>
