@@ -8,7 +8,7 @@ module.exports.create= function(req,res){
         user : req.user._id
     },function(err,post){
         if(err){req.flash('error', 'Error in Creating Post !'); return res.redirect('back');}
-        req.flash('success', 'Post Created !');
+        req.flash('success', 'Post Published !');
         return res.redirect('back');
     });
 }
@@ -25,7 +25,7 @@ module.exports.destroy = async function(req,res){
      return res.redirect('back');
     }
     else{
-      req.flash('error', 'You are not Authorized to Delete this post !');
+      req.flash('error', 'You cannot delete this post !');
       return res.redirect('back');
     } 
   } 
