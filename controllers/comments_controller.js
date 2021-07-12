@@ -13,13 +13,14 @@ try{
        });
       post.comments.push(comment); //push the comment id in comment's array of post schema
       post.save(); // save the changes after pushing the comment
-
+     
+      req.flash('success', 'Comment Posted !');
       return res.redirect('/');
    }
 }
 catch(err){
-  console.log('Error ! ',err);
-  return;
+  req.flash('error', err);
+  return res.redirect('/');
 }  
 };
 
@@ -31,14 +32,16 @@ try{
       if(req.user.id == comment.user || req.user.id == post.user){ // if the user logged in is the guy who commented or the guy who posted 
         comment.remove(); // then only he/she can remove the comment
         await Post.findByIdAndUpdate(postId, {$pull : {comments : req.params.id}});
-            return res.redirect('back');
+        req.flash('success', 'Comment Deleted !');
+        return res.redirect('back');
       }
       else{
+        req.flash('error', 'You cannot Delete this Comment !');
         return res.redirect('back');
       }
 } 
 catch(err){
-  console.log('Error ! ',err);
-  return;
+  req.flash('error', err);
+  return res.redirect('/');
 }
 };
