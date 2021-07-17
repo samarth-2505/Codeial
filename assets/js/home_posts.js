@@ -12,7 +12,15 @@
              success : function(data){
                  let newPost = newPostDom(data.data.post);
                  $('#posts-list-container>ul').prepend(newPost);
-                 deletePostDom($(' .delete-post-btn', newPost));
+                 deletePostDom($(' .delete-post-btn', newPost));  //attaching the delete method to every delete anchor tag of the newPost created
+                 new Noty({
+                    theme: 'relax',
+                    text: "Post published!",
+                    type: 'success',
+                    layout: 'topRight',
+                    timeout: 1500
+                    
+                }).show();
              },
              error : function(error){
                  console.log(error.responseText);
@@ -60,6 +68,14 @@
              method : 'get',
              success : function(data){
                $(`#post-${data.data.post_id}`).remove();
+               new Noty({
+                theme: 'relax',
+                text: "Post Deleted!",
+                type: 'success',
+                layout: 'topRight',
+                timeout: 1500
+                
+            }).show();
              },
              error : function(error){
                 console.log(error.responseText);
@@ -68,5 +84,15 @@
         });
     }
 
+    let convertPostsToAjax = function(){
+        let posts = $('#posts-list-container>ul>li');
+        posts.each(function(){
+          let self = $(this);
+          let deleteButton = $(' .delete-post-btn', self);
+          deletePostDom(deleteButton);
+        });
+    } 
+    
     createPost();
+    convertPostsToAjax();
 }
