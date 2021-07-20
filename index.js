@@ -8,6 +8,7 @@ const cookieParser=require('cookie-parser');
 const session=require('express-session');
 //used for authenticating the user
 const passport=require('passport');
+const passportJWT = require('./config/passport-jwt-strategy');
 const passportLocal=require('./config/passport-local-strategy');
 const MongoStore = require('connect-mongo');
 const sassMiddleware= require('node-sass-middleware');
