@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:500);
 body {
   background-color: #ededfb;
   background-size: cover;
@@ -13,14 +14,6 @@ body {
   border-radius: 5px;
   border-top: 5px solid #f27700;
   margin: 0 auto; }
-
-.login-block h1 {
-  text-align: center;
-  color: #000;
-  font-size: 18px;
-  text-transform: uppercase;
-  margin-top: 0;
-  margin-bottom: 20px; }
 
 .login-block input {
   width: 100%;
@@ -66,7 +59,50 @@ body {
   font-size: 14px;
   font-family: Montserrat;
   outline: none;
-  cursor: pointer; }
+  cursor: pointer;
+  margin-bottom: 10px; }
 
 .login-block #submit:hover {
   background: #ff7b81; }
+
+.login-block form {
+  margin-bottom: 0px; }
+
+#or {
+  text-align: center;
+  font-size: 14px;
+  color: grey;
+  margin-bottom: 10px; }
+
+.google-btn {
+  cursor: pointer;
+  width: 100%;
+  height: 42px;
+  background-color: #4285f4;
+  border-radius: 2px;
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
+  text-transform: uppercase; }
+  .google-btn .google-icon-wrapper {
+    position: absolute;
+    margin-top: 1px;
+    margin-left: 1px;
+    width: 40px;
+    height: 40px;
+    border-radius: 2px;
+    background-color: #fff; }
+  .google-btn .google-icon {
+    position: absolute;
+    margin-top: 11px;
+    margin-left: 11px;
+    width: 18px;
+    height: 18px; }
+  .google-btn .btn-text {
+    float: right;
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+    margin-right: 15%; }
+  .google-btn:hover {
+    box-shadow: 0 0 6px #4285f4; }
+  .google-btn:active {
+    background: #1669F2; }
