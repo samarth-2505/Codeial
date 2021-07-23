@@ -22,6 +22,7 @@ router.post('/create-session',passport.authenticate(
 
 router.get('/sign-out',usersController.destroySession);
 
+//using google oauth 2 strategy for authenticating
 router.get('/auth/google', passport.authenticate('google', 
 {scope : ['profile', 'email']}
 ));
