@@ -1,8 +1,10 @@
-<h1>Sign In</h1>
+<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="/css/user_sign_in.css">
 
-<form action="/users/create-session" method="post">
-<input type="email" name="email" placeholder="Your Email" required>
-<input type="password" name="password" placeholder="Password" required>
-<input type="submit" value="Sign In">
-
-</form>
+<div class="login-block">
+    <form action="/users/create-session" method="post">
+        <input type="email" name="email" placeholder="Your Email" id="username" required>
+        <input type="password" name="password" placeholder="Password" id="password" required>
+        <input type="submit" value="Sign In" id="submit">
+    </form>
+</div>
