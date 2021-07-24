@@ -1,6 +1,6 @@
 const Comment = require('../models/comment');
 const Post = require('../models/post');
-const { post } = require('../routes');
+const commentsMailer = require('../mailers/comments_mailer');
 
 module.exports.create = async function(req,res){
 try{
@@ -13,7 +13,19 @@ try{
        });
       post.comments.push(comment); //push the comment id in comment's array of post schema
       post.save(); // save the changes after pushing the comment
-     
+      comment = await comment.populate({
+        path : 'post',
+        populate : {
+          path : 'user',
+          select : 'name email'
+        }
+      }).populate({
+        path : 'user',
+        select : 'name'
+      })
+      .execPopulate(); //we want to populate user of comment model , 
+      // but we are not populating it fully, only the name and email key of user are being populated 
+      commentsMailer.newComment(comment);
       req.flash('success', 'Comment Posted !');
       return res.redirect('/');
    }
