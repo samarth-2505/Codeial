@@ -1,6 +1,8 @@
 const Comment = require('../models/comment');
 const Post = require('../models/post');
 const commentsMailer = require('../mailers/comments_mailer');
+const commentEmailWorker = require('../workers/comment_email_worker');
+const queue = require('../config/kue');
 
 module.exports.create = async function(req,res){
 try{
@@ -25,7 +27,14 @@ try{
       })
       .execPopulate(); //we want to populate user of comment model , 
       // but we are not populating it fully, only the name and email key of user are being populated 
-      commentsMailer.newComment(comment);
+      // commentsMailer.newComment(comment);
+      let job = queue.create('emails',comment).save(function(err){
+        if(err){
+          console.log('Error in sending job to the queue !', err);
+          return;
+        }
+        console.log('Job Enqueued !',job.id);
+      });
       req.flash('success', 'Comment Posted !');
       return res.redirect('/');
    }
