@@ -1,1 +1,0 @@
-A full stack social media web application. Have fun using it :) 
