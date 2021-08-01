@@ -90,3 +90,5 @@ app.listen(port, function(err){
 
     console.log(`Server is running on port: ${port}`);
 });
+
+//NODE_ENV=production nodemon index.js -> use this while deploying on ubuntu
