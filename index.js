@@ -1,5 +1,6 @@
 const express = require('express');
 const env = require('./config/environment');
+const logger = require('morgan');
 const app = express();
 const port = 8000;
 const expressLayouts = require('express-ejs-layouts');
@@ -19,13 +20,18 @@ const customMware = require('./config/middleware');
 const path = require('path');
 
 //middleware to take scss files from source and put them as css files in the destination
-app.use(sassMiddleware({
- src : path.join(__dirname, env.asset_path, 'scss'),
- dest : path.join(__dirname, env.asset_path, 'css'),
- debug : true ,
- outputStyle : 'extended',
- prefix : '/css'
-}));
+//run the sass middleware only if the project is in the development environment
+if(env.name == 'development')
+{
+    app.use(sassMiddleware({
+        src : path.join(__dirname, env.asset_path, 'scss'),
+        dest : path.join(__dirname, env.asset_path, 'css'),
+        debug : true ,
+        outputStyle : 'extended',
+        prefix : '/css'
+    }));
+}
+
 
 app.use(express.urlencoded());
 
@@ -34,6 +40,9 @@ app.use(cookieParser());
 
 //make the uploads path available to the browser
 app.use('/uploads',express.static(__dirname + '/uploads'));
+
+// using morgan middleware to save the logs in a file
+app.use(logger(env.morgan.mode, env.morgan.options));
 
 app.use(expressLayouts);
 //extract style and scripts from sub pages into the layout
