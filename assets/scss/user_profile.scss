@@ -2,3 +2,97 @@ body{
     background-color: #85FFBD;
     background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
 }
+
+#user-profile-container{
+    font-family: sans-serif;
+    position: absolute;
+    left: 25%;
+    top: 20%;
+    width: 50%;
+    background-color: honeydew;
+    height: 60%;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    div{
+        width: 100%;
+    }
+
+    #user-avatar{
+        height: 50%;
+        margin-bottom: 5%;
+        img{
+            width: 35%;
+            height: 100%;
+            object-fit : fill;
+            border-radius: 25%;
+        }
+        
+    }
+    
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;    
+    
+    #details{
+       font-weight: 600;
+       font-size: 1.5rem; 
+       p{
+           margin: 2%;
+       }
+       margin-bottom: 1.5%;
+    }
+
+    #friend-button{
+        button{
+            cursor: pointer;
+            width: 20%;
+            height: 30px;
+            letter-spacing: 1px;
+        }
+        .add{
+            background-color: greenyellow;
+        }
+        .delete{
+            background-color: red;
+            color: white;
+        }
+    }
+}
+
+/* On mouse-over, add a deeper shadow */
+#user-profile-container:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+
+#update-form{
+    form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        #file{
+            margin-left: 10%;
+        }
+        input{
+            margin-bottom: 10px;
+            border-width: 0px;
+            border-bottom-width: 2px;
+            outline: none;
+            width: 40%;
+            padding: 4px;
+            font-family: sans-serif;
+            letter-spacing: 0.7px;
+        }
+        #submit{
+            width: 20%;
+            background-color: #85FFBD;
+            border-radius: 6px;
+            transition: all .3s cubic-bezier(0.67, 0.17, 0.40, 0.83);
+            cursor: pointer;
+            letter-spacing: 1px;
+            margin-top: 10px;
+            font-weight: 550;
+        }
+    }
+    
+}

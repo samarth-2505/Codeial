@@ -61,5 +61,5 @@ const production = {
 };
 
 //if process.env.CODEIAL_ENVIRONMENT is undefined then export development else export the value of process.env.CODEIAL_ENVIRONMENT 
-module.exports = eval(process.env.CODEIAL_ENVIRONMENT) == undefined ? development : eval(process.env.CODEIAL_ENVIRONMENT); 
-// module.exports = development;
+// module.exports = eval(process.env.CODEIAL_ENVIRONMENT) == undefined ? development : eval(process.env.CODEIAL_ENVIRONMENT); 
+module.exports = development;
